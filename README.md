@@ -1,6 +1,6 @@
 # 🎤 ZaśpiewajMy - Music & Lyrics Platform
 
-> A full-stack web application designed for music enthusiasts to discover lyrics, and engage with a community of music lovers.
+ A full-stack web application designed for music enthusiasts to discover lyrics, and engage with a community of music lovers.
 
 ## 📖 Overview
 
