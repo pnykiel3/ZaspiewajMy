@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj utwór</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-dark text-light">
+
+
+    <section class="hero-section d-flex align-items-center justify-content-center text-center border-bottom border-secondary" style="min-height: 20vh;">
+        <div class="container">
+            <a href="/" class="text-decoration-none text-reset">
+                <h1 class="display-5 fw-bold mb-4">🎤 Zaśpiewaj<span class="text-primary">My</span></h1>
+            </a>
+            <p class="lead mb-6 text-white"><h3>Dodaj nowy utwór</h3></p>
+        </div>
+    </section>
+
+
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                
+                <div class="card bg-dark border-secondary shadow-lg">
+                    <div class="card-body p-4">
+                        
+                        <form action="/add-song" method="POST">
+                            
+                            <div class="mb-3">
+                                <label class="form-label text-primary">Twój Nick</label>
+                                <input type="text" name="added_by" class="form-control bg-dark text-light border-secondary" placeholder="Kto dodaje ten hit?" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label text-primary">Wykonawca / Zespół</label>
+                                    <input type="text" name="artist" class="form-control bg-dark text-light border-secondary" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label text-primary">Tytuł utworu</label>
+                                    <input type="text" name="title" class="form-control bg-dark text-light border-secondary" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-primary">Gatunki muzyczne</label>
+                                <input type="text" name="category" class="form-control bg-dark text-light border-secondary" placeholder="np. rock, pop, lata 80 (oddziel przecinkami)" required>
+                                <div class="form-text text-primary">Wpisz kilka gatunków oddzielając je przecinkami.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-primary">Link do YouTube (Karaoke/Teledysk)</label>
+                                <input type="text" name="youtube_url" class="form-control bg-dark text-light border-secondary" placeholder="https://www.youtube.com/watch?v=..." required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-primary">Tekst piosenki</label>
+                                <textarea name="lyrics" class="form-control bg-dark text-light border-secondary" rows="8" placeholder="Wklej tutaj tekst..." required></textarea>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">💾 Zapisz piosenkę w bazie</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-4 text-muted mt-5">
+        <p>&copy; 2025 Karaoke Projekt</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyniki wyszukiwania - <%= searchQuery %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-dark text-light d-flex flex-column min-vh-100">
+
+    <section class="hero-section d-flex align-items-center justify-content-center text-center border-bottom border-secondary" style="min-height: 35vh;">
+        <div class="container">
+            <a href="/" class="text-decoration-none text-reset">
+                <h1 class="display-5 fw-bold mb-4">🎤 Zaśpiewaj<span class="text-primary">My</span></h1>
+            </a>
+            <p class="lead mb-6 text-white">Wyniki wyszukiwania</p>
+                
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <form action="/search" method="GET" class="d-flex shadow-lg">
+                        <input type="text" name="q" value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>" class="form-control form-control-lg rounded-start bg-dark text-light border-secondary" placeholder="Wpisz tytuł lub artystę..." aria-label="Szukaj">
+                        <button class="btn btn-primary btn-lg rounded-end px-4" type="submit">
+                            <i class="bi bi-search"></i> Szukaj
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container my-5 flex-grow-1">
+        
+        <h2 class="mb-4">
+            Wyniki dla frazy: <span class="text-primary fst-italic">"<%= searchQuery %>"</span>
+        </h2>
+
+        
+
+        <% if (songs.length > 0) { %>
+            
+            <div class="list-group shadow">
+                <% songs.forEach(function(song) { %>
+                    <a href="/song/<%= song.id %>" class="list-group-item list-group-item-action bg-dark text-light border-secondary p-3 d-flex justify-content-between align-items-center mb-1 rounded">
+                        <div>
+                            <h5 class="mb-1 fw-bold text-primary"><%= song.title %></h5>
+                            <p class="mb-0 text-muted">
+                                <i class="bi bi-mic-fill"></i> <%= song.artist %>
+                            </p>
+                        </div>
+                        <div class="text-end d-none d-sm-block">
+                            <span class="badge bg-secondary rounded-pill mb-1">
+                                <i class="bi bi-eye"></i> <%= song.views %>
+                            </span>
+                            <br>
+                            <small class="text-muted">Kliknij, aby zaśpiewać</small>
+                        </div>
+                        <div class="d-block d-sm-none">
+                            <i class="bi bi-chevron-right text-secondary"></i>
+                        </div>
+                    </a>
+                <% }); %>
+            </div>
+
+        <% } else { %>
+            
+            <div class="text-center py-5 rounded border border-secondary" style="background-color: #222;">
+                <i class="bi bi-music-note-beamed display-1 text-muted mb-3 d-block"></i>
+                <h3 class="fw-light">Niestety, nie znaleźliśmy takiego utworu.</h3>
+                <p class="text-muted">Spróbuj wpisać inną frazę lub sprawdź pisownię.</p>
+                <div class="mt-4">
+                    <a href="/" class="btn btn-outline-light">Wróć do strony głównej</a>
+                </div>
+            </div>
+
+        <% } %>
+
+    </main>
+
+    <footer class="text-center py-4 text-muted border-top border-secondary mt-auto">
+        <p>&copy; 2025 Paweł Nykiel</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
